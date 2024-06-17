@@ -1,0 +1,255 @@
+add_newline = true
+
+command_timeout = 1000
+
+format = """
+$conda\
+$os\
+$username\
+$hostname\
+$memory_usage\ 
+$directory
+$git_branch$git_status[${env_var.drive}](bright bold green)$character${env_var.is_elevated_session}"""
+
+
+
+[memory_usage]
+disabled = false
+threshold = -1
+symbol = "󰍛"
+style = "bold white"
+format = "[${ram_pct}]($style) "
+
+
+# Drop ugly default prompt characters
+[character]
+success_symbol = '[->](green)'
+error_symbol = '[-x-](bright-red)'
+
+
+
+[env_var.is_elevated_session] # TODO: Turn this into a custom env_var once implemented
+variable = "ISELEVATEDSESSION"
+symbol   = '󰓒'
+format   = "[$symbol](bright-red)"
+# ---
+
+
+[os]
+format = '[$symbol](bold white) '   
+disabled = false
+
+
+# ---
+
+# Shows the username
+[username]
+style_user = 'Blue bold'
+style_root = 'red bold'
+format = '[$user]($style) '
+disabled = false
+show_always = true
+
+# Shows the hostname
+[hostname]
+ssh_only = false
+format = 'on [$hostname](bold yellow) '
+disabled = false
+
+# Shows current directory
+[directory]
+truncation_length = 20
+truncation_symbol = ""
+truncate_to_repo = false
+home_symbol = '󰋜 ~'
+read_only_style = '197'
+read_only = '  '
+format = '[$path]($style)[$read_only]($read_only_style) '
+style = "bold bright-green"
+
+# Shows current git branch
+[git_branch]
+symbol = ' '
+format = '[$symbol$branch]($style)'
+
+# Shows current git status
+[git_status]
+format = '[$all_status$ahead_behind]($style) '
+style = 'bold green'
+up_to_date = ''
+stashed = ' '
+conflicted   = "[≠ $count ](bold purple)"
+ahead        = "[⇡ $count ](bold purple)"
+behind       = "[⇣ $count ](bold purple)"
+diverged     = "[⇕ $count ](bold purple)"
+untracked    = "[+ $count ](bold blue)"
+modified     = "[~ $count ](bold cyan)"
+staged       = "[++ $count ](bold green)"
+renamed      = "[» $count ](bold white)"
+deleted      = "[✘ $count ](bold red)"
+
+# Shows the conda environment
+[conda]
+format = '[$symbol$environment](bold blue) '
+
+
+# ---
+
+[python]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[docker_context]
+disabled = true
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰖳"
+
+[aws]
+symbol = "  "
+
+[nodejs]
+disabled = true
+
+[c]
+symbol = " "
+
+[package]
+symbol = "󰏗 "
+
+[php]
+symbol = " "
+
+[java]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[nim]
+symbol = "󰆥 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[vagrant]
+disabled = true
+
+[helm]
+disabled = true
+
+[terraform]
+disabled = true
+
+[buf]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[meson]
+symbol = "󰔷 "
+
+[nix_shell]
+symbol = " "
+
+[ocaml]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[zig]
+symbol = " "

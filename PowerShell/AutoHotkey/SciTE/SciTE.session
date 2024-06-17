@@ -1,0 +1,31 @@
+# SciTE session file
+
+position.left=195
+position.top=-712
+position.width=1025
+position.height=531
+position.maximize=0
+
+mru.1.path=C:\Program Files\AutoHotkey\SciTE\SciTEGlobal.properties
+mru.2.path=H:\Users\NRevi\OneDrive\Documents\PowerShell\AutoHotkey\SciTE\SciTEUser.properties
+mru.3.path=C:\Program Files\AutoHotkey\SciTE\ahk.lua
+mru.4.path=H:\Users\NRevi\OneDrive\Documents\PowerShell\AutoHotkey\SciTE\_config.properties
+mru.5.path=H:\Users\NRevi\OneDrive\Documents\PowerShell\AutoHotkey\SciTE\Styles\SciTE4AutoHotkey Light.style.properties
+mru.6.path=C:\Program Files\AutoHotkey\SciTE\ahk.commands.properties
+mru.7.path=H:\Users\NRevi\AutoHotKey\scripts\SciTE.properties
+mru.8.path=H:\Users\NRevi\AutoHotKey\scripts\AHKPath.ahk
+mru.9.path=H:\Users\NRevi\OneDrive\Documents\AutoHotkey\scripts\newmenuforHA.ahk
+mru.10.path=H:\Users\NRevi\OneDrive\Documents\AutoHotkey\scripts\automator example edgedriver
+
+buffer.1.path=H:\Users\NRevi\AutoHotKey\scripts\AHKPath.ahk
+buffer.1.position=2837
+buffer.1.scroll=77
+
+buffer.2.path=H:\Users\NRevi\OneDrive\Documents\AutoHotkey\scripts\newmenuforHA.ahk
+buffer.2.position=113
+buffer.2.scroll=0
+
+buffer.3.path=H:\Users\NRevi\OneDrive\Documents\AutoHotkey\scripts\automator example edgedriver
+buffer.3.position=1
+buffer.3.scroll=0
+buffer.3.current=1

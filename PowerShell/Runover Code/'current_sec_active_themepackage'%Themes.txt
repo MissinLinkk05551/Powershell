@@ -1,0 +1,19 @@
+'current_sec_active_themepackage'%Themes
+com.sec.GreenseathunderstormD.comm,com.sec.StarThundervolcanoeruptionC.common,pitbullgoldrush.v23decfeb,kr.co.polycube.Zodiac_Aries,com.MPC101_Theme7,com.infinitywatchfaces.Shock,com.sec.Technologydarkprogramhacker.common,com.sec.darknightseastormD.common,
+okjn.black,com.sec.Bluetechnologycarbonplate.common,com.sec.Luxurymetallicblacktexture.common,com.sec.Supertexturedbrownwood.common,
+
+'current_sec_appicon_theme_package' %Appicon
+com.sec.GreenseathunderstormD.comm.appicon,com.sec.StarThundervolcanoeruptionC.common.appicon,pitbullgoldrush.v23decfeb.appicon,kr.co.polycube.Zodiac_Aries.appicon,com.MPC101_Theme7.appicon,com.infinitywatchfaces.Shock.appicon,com.sec.Technologydarkprogramhacker.common.appicon,com.sec.darknightseastormD.common.appicon,
+okjn.black.appicon,com.sec.Bluetechnologycarbonplate.common.appicon,com.sec.Luxurymetallicblacktexture.common.appicon,com.sec.Supertexturedbrownwood.common.appicon,
+
+current_sec_home_theme_package'%Home_theme
+com.sec.GreenseathunderstormD.comm.home,com.sec.StarThundervolcanoeruptionC.common.home,pitbullgoldrush.v23decfeb.home,kr.co.polycube.Zodiac_Aries.home,com.MPC101_Theme7.home,com.infinitywatchfaces.Shock.home,com.sec.Technologydarkprogramhacker.common.home,com.sec.darknightseastormD.common.home,
+okjn.black.home,com.sec.Bluetechnologycarbonplate.common.home,com.sec.Luxurymetallicblacktexture.common.home,com.sec.Supertexturedbrownwood.common.home,
+
+'current_sec_wallpaper_theme_package'%Wallpaper
+com.sec.GreenseathunderstormD.comm.wallpaper,com.sec.StarThundervolcanoeruptionC.common.wallpaper,pitbullgoldrush.v23decfeb.wallpaper,kr.co.polycube.Zodiac_Aries.wallpaper,com.MPC101_Theme7.wallpaper,com.infinitywatchfaces.Shock.wallpaper,com.sec.Technologydarkprogramhacker.common.wallpaper,com.sec.darknightseastormD.common.wallpaper,
+okjn.black.wallpaper,com.sec.Bluetechnologycarbonplate.common.wallpaper,com.sec.Luxurymetallicblacktexture.common.wallpaper,com.sec.Supertexturedbrownwood.common.wallpaper,
+
+
+'pen_detached_time': from '0' to'1696631793542
+'theme_font_clock': from'/data/overlays/font/com.sec.darknightseastormD.common0/com.sec.darknightseastormD.common.Cloud.ttf' to=theme_font_numeric'from '/data/overlays/font/com.sec.darknightseastormD.common0/com.sec.darknightseastormD.common.Moxie.ttf'to=wallpaper_finish_drawing': from1696631741437' to '1696631780452

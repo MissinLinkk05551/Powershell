@@ -1,0 +1,152 @@
+# Setting the STARSHIP_CONFIG environment variable to the specified path.
+# Specifying the STARSHIP_DISTRO to the hostname of the system.
+
+$ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
+$ENV:STARSHIP_DISTRO = "[$($host.UI.RawUI.WindowTitle)]"
+
+# Importing and setting up the alias section, various modules, utilities, scripts, and other functions.
+
+if (-not (Test-Path -Path "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1")) {
+    Write-Error "Chocolatey not found in path: $env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+    return
+}
+
+Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+Import-Module gsudoModule.psd1
+Import-Module z
+
+# Defining aliases for ease of use in PowerShell.
+
+$aliases = @{
+    '~' = 'home'
+    'ip' = 'ipall'
+    'dc' = 'docker-compose'
+    'gcc' = 'gitclone'
+    'va' = 'venv'
+    'editor' = 'code'
+    'edit' = 'editor'
+    'profile' = 'profile_alias'
+    'reload' = 'reload_alias'
+    'sudo' = 'gsudo'
+}
+
+if (Get-Command nslookup -ErrorAction SilentlyContinue) {
+    $aliases['dig'] = 'nslookup'
+}
+
+Set-Alias @aliases
+
+# Defining various functions for ease of use in PowerShell.
+
+function mkdir { New-Item "$args" -ItemType Directory }
+function GoAdmin { Start-Process pwsh –Verb RunAs }
+function touch { New-Item "$args" -ItemType File }
+function venv { .venv/scripts/activate.ps1 }
+function home { Join-Path $env:USERPROFILE }
+function ipall { ipconfig /all }
+function gcc { git clone $args }
+function reload_alias { & $PROFILE }
+function profile_alias { editor $PROFILE }
+
+# Initializing Starship with the PowerShell shell.
+
+Invoke-Expression (& 'C:\Program Files\starship\bin\starship.exe' init powershell)
+Invoke-Expression (&starship init powershell)
+Invoke-Expression (&scoop-search-multisource.exe --hook)
+
+# !! Contents within this block are managed by 'conda init' !!
+
+# region conda initialize
+
+$condaOutput = (& "C:\ProgramData\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String
+$condaCommands = $condaOutput -split '^[^#]' | Where-Object { $_ -match '\S' } | ForEach-Object { $_.Trim() }
+$condaCommands | ForEach-Object { Invoke-Expression $_ }
+
+# endregion
+
+# Setting a key handler for F7 to show command history in a GUI grid view.
+
+Set-PSReadLineKeyHandler -Key F7 -BriefDescription History -LongDescription 'Show command history' -ScriptBlock {
+    # Logic for showing command history in a grid view.
+    $pattern = $null
+    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$pattern, [ref]$null)
+    if ($pattern) {
+        $pattern = [regex]::Escape($pattern)
+    }
+
+    $history = [System.Collections.ArrayList]@(
+        # Content of the history array list
+    )
+    $history.Reverse()
+
+    $command = $history | Out-GridView -Title History -PassThru
+    if ($command) {
+        [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+        [Microsoft.PowerShell.PSConsoleReadLine]::Insert(($command -join "`n"))
+    }
+}
+
+# Setting a key handler for Alt+a to cycle through arguments on the command line.
+# Cycle through arguments on current line and select the text. This makes it easier to quickly change the argument if re-running a previously run command from the history
+
+Set-PSReadLineKeyHandler -Key Alt+a `
+    -BriefDescription SelectCommandArguments `
+    -LongDescription "Set current selection to next command argument in the command line. Use of digit argument selects argument by position" `
+    -ScriptBlock {
+
+        # Logic to handle cycling through command line arguments.
+
+        param($key, $arg)
+
+        $ast = $null
+        $cursor = $null
+        [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$ast, [ref]$null, [ref]$null, [ref]$cursor)
+
+        $asts = $ast.FindAll( {
+                $args[0] -is [System.Management.Automation.Language.ExpressionAst] -and
+                $args[0].Parent -is [System.Management.Automation.Language.CommandAst] -and
+                $args[0].Extent.StartOffset -ne $args[0].Parent.Extent.StartOffset
+            }, $true)
+
+        if ($asts.Count -eq 0) {
+            [Microsoft.PowerShell.PSConsoleReadLine]::Ding()
+            return
+        }
+
+        $nextAst = $null
+
+        if ($null -ne $arg) {
+            $nextAst = $asts[$arg - 1]
+        }
+        else {
+            foreach ($ast in $asts) {
+                if ($ast.Extent.StartOffset -ge $cursor) {
+                    $nextAst = $ast
+                    break
+                }
+            }
+
+            if ($null -eq $nextAst) {
+                $nextAst = $asts[0]
+            }
+        }
+
+        $startOffsetAdjustment = 0
+        $endOffsetAdjustment = 0
+
+        if ($nextAst -is [System.Management.Automation.Language.StringConstantExpressionAst] -and
+            $nextAst.StringConstantType -ne [System.Management.Automation.Language.StringConstantType]::BareWord) {
+            $startOffsetAdjustment = 1
+            $endOffsetAdjustment = 2
+        }
+
+        [Microsoft.PowerShell.PSConsoleReadLine]::SetCursorPosition($nextAst.Extent.StartOffset + $startOffsetAdjustment)
+        [Microsoft.PowerShell.PSConsoleReadLine]::SetMark($null, $null)
+        [Microsoft.PowerShell.PSConsoleReadLine]::SelectForwardChar($null, ($nextAst.Extent.EndOffset - $nextAst.Extent.StartOffset) - $endOffsetAdjustment)
+    }
+
+# Setting PSReadLine options for prediction and edit mode.
+
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
