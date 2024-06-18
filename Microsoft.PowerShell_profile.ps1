@@ -12,6 +12,7 @@ $ENV:STARSHIP_DISTRO = "$env:COMPUTERNAME"
 
 #Setting Home to H:
 $ENV:Home = "H:\Users\NRevi\"
+$ENV:Pro = "H:\Users\NRevi\OneDrive\Documents\PowerShell"
 Write-Host "Debug: Set Home to $ENV:Home"
 
 # Initializing Starship with the PowerShell shell.
@@ -71,7 +72,8 @@ Set-Alias -Name xcopyf -Value xcopy_alias
 Set-Alias -Name xx -Value xpaste
 Set-Alias -Name cc -Value xcopy
 Set-Alias -Name uppro -Value UpdateAllShell
-Set-Alias -Name rp -Value reload-profile
+Set-Alias -Name pp -Value reload-profile
+Set-Alias -Name pro -Value cdpro
 Write-Host "Debug: Set aliases"
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Setup of Alias for pwsh ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~## 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ My Powershell Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~## 
@@ -99,6 +101,10 @@ function touch {
 function home { 
     Write-Host "Debug: home function called"
     Set-Location "H:\Users\NRevi" 
+}
+function cdpro { 
+    Write-Host "Debug: Pro function called"
+    Set-Location "H:\Users\NRevi\OneDrive\Documents\PowerShell"
 }
 function ipall { 
     Write-Host "Debug: ipall function called"
