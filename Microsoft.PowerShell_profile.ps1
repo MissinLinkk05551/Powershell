@@ -70,6 +70,8 @@ Set-Alias -Name xpaste -Value xpaste_alias
 Set-Alias -Name xcopyf -Value xcopy_alias
 Set-Alias -Name xx -Value xpaste
 Set-Alias -Name cc -Value xcopy
+Set-Alias -Name uppro -Value UpdateAllShell
+Set-Alias -Name rp -Value reload-profile
 Write-Host "Debug: Set aliases"
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Setup of Alias for pwsh ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~## 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ My Powershell Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~## 
@@ -139,6 +141,10 @@ function cdhome {
         Import-Module "$ChocolateyProfile"
     }
     Set-Location $env:Home
+}
+function UpdateAllShell {
+    Update-PowerShell
+    Update-Profile
 }
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ My Powershell Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~## 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  Chris Titus Functions  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
@@ -283,7 +289,7 @@ function Update-Profile {
         Remove-Item "$env:temp/Microsoft.PowerShell_profile.ps1" -ErrorAction SilentlyContinue
     }
 }
-Update-Profile
+
 
 function Update-PowerShell {
     if (-not $global:canConnectToGitHub) {
@@ -313,7 +319,7 @@ function Update-PowerShell {
         Write-Error "Failed to update PowerShell. Error: $_"
     }
 }
-Update-PowerShell
+
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ POWERSHELL & PROFILE UPDATE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    PSReadLine     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 # Setting a key handler for F7 to show command history in a GUI grid view.
