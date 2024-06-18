@@ -250,17 +250,18 @@ function ll { Get-ChildItem -Path . -Force -Hidden | Format-Table -AutoSize }
 # Git Shortcuts
 function gs { git status }
 function ga { git add . }
-function gco { param($m) git commit -m "$m" }
+function gcom { param($m) git commit -m "$DateTime.Date" }
+function gpm { git push origin main }
 function gp { git push }
 function g { z Github }
 function gcom {
     git add .
     git commit -m "$args"
 }
-function lazyg {
+function ggg {
     git add .
-    git commit -m "$args"
-    git push
+    git commit -m "$DateTime.Date"
+    git push origin main
 }
 
 # Quick Access to System Information
