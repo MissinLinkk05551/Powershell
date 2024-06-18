@@ -74,6 +74,8 @@ Set-Alias -Name cc -Value xcopy
 Set-Alias -Name uppro -Value UpdateAllShell
 Set-Alias -Name pp -Value reload-profile
 Set-Alias -Name pro -Value cdpro
+Set-Alias -Name gad -Value ga
+Set-Alias -Name com -Value gco
 Write-Host "Debug: Set aliases"
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Setup of Alias for pwsh ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~## 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ My Powershell Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~## 
@@ -248,7 +250,7 @@ function ll { Get-ChildItem -Path . -Force -Hidden | Format-Table -AutoSize }
 # Git Shortcuts
 function gs { git status }
 function ga { git add . }
-function gc { param($m) git commit -m "$m" }
+function gco { param($m) git commit -m "$m" }
 function gp { git push }
 function g { z Github }
 function gcom {
