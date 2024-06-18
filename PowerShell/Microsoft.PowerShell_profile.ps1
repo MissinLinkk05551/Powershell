@@ -258,8 +258,8 @@ function flushdns { Clear-DnsClientCache }
 # Clipboard Utilities
 function cpy { Set-Clipboard $args[0] }
 function pst { Get-Clipboard }
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     Chris Titus Functions   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
-##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ POWERSHELL & PROFILE UPDATE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     Chris Titus Functions     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    POWERSHELL & PROFILE UPDATE  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
 # Check for Profile Updates
 function Update-Profile {
     if (-not $global:canConnectToGitHub) {
