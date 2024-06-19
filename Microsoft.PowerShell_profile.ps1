@@ -12,12 +12,16 @@ $ENV:STARSHIP_DISTRO = "$env:COMPUTERNAME"
 
 #Setting Home to H:
 $ENV:Home = "H:\Users\NRevi\"
-$ENV:Pro = "H:\Users\NRevi\OneDrive\Documents\PowerShell"
+# $ENV:Pro = "H:\Users\NRevi\OneDrive\Documents\PowerShell"
 Write-Host "Debug: Set Home to $ENV:Home"
 
 # Initializing Starship with the PowerShell shell.
 Invoke-Expression (&starship init powershell)
 Write-Host "Debug: Initialized Starship"
+
+# Initializing Zoxide with the PowerShell shell.
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+Write-Host "Debug: Initialized Zoxide"
 
 # PowerToys CommandNotFound module
 Import-Module "H:\Users\NRevi\OneDrive\Documents\PowerShell\Modules\Microsoft.WinGet.CommandNotFound\Microsoft.WinGet.CommandNotFound.psd1"
@@ -76,6 +80,9 @@ Set-Alias -Name pp -Value reload-profile
 Set-Alias -Name pro -Value cdpro
 Set-Alias -Name gad -Value ga
 Set-Alias -Name com -Value gco
+Set-Alias -Name ctt -Value christitus
+Set-Alias -Name ixx -Value runwebscript
+Set-Alias -Name push -Value ggg
 Write-Host "Debug: Set aliases"
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Setup of Alias for pwsh ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~## 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ My Powershell Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~## 
@@ -153,6 +160,12 @@ function cdhome {
 function UpdateAllShell {
     Update-PowerShell
     Update-Profile
+}
+function christitus {
+    iwr -useb https://christitus.com/win | iex
+}
+function runwebscript {
+    iwr -useb "$args" | iex
 }
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ My Powershell Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~## 
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  Chris Titus Functions  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
